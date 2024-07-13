@@ -1,5 +1,4 @@
 from threading import Thread
-from time import sleep
 
 
 class Knight(Thread):
@@ -10,12 +9,14 @@ class Knight(Thread):
         self.power = power
 
     def run(self):
-        print(f'{self.name}, на нас напали!')
+        print(f'{self.name}, на нас напали!'+'\n')
         enemy = 100
-        for j in range(5):
+        for j in range(100):
             enemy -= self.power
             print(f'{self.name}: сражается {j+1} день(дня)..., осталось {enemy} воинов.'+'\n')
-        print(f'{self.name} одержал победу спустя {j+1} дней(дня)!')
+            if enemy == 0:
+                print(f'{self.name} одержал победу спустя {j+1} дней(дня)!')
+                break
 
 
 first_knight = Knight('Sir Lancelot', 10)
@@ -28,3 +29,4 @@ first_knight.join()
 second_knight.join()
 
 print('Все битвы закончились!')
+
